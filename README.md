@@ -50,5 +50,7 @@ XHeaderValue                -> NPSC_X_HEADER_VALUE
 
 ### A useful default example
 
+```console
 docker run --network app-network -e "NGX_ADDRESS=app" -e NGX_PORT=1234 -e "NPSC_ENABLE_FILTERS=in_place_optimize_for_browser,inline_preview_images,lazyload_images,remove_comments,local_storage_cache,responsive_image,move_css_to_head,move_css_above_scripts,collapse_whitespace,combine_javascript,convert_jpeg_to_webp" -e "NPSC_JS_PRESERVE_UR_Ls=on" sheogorath/nginx-pagespeed
+```
 
