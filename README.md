@@ -5,7 +5,7 @@ Pagespeed container using NGINX
 > -- [Wikipedia](https://en.wikipedia.org/w/index.php?title=Google_PageSpeed_Tools&oldid=751619122#PageSpeed_Module)
 
 
-##Usage
+## Usage
 
 This module is build to work as a very minimal and generic image.
 
@@ -23,7 +23,7 @@ Run the container in a network and specify the target:
 docker run --network app-network -e "NGX_ADDRESS=app" -e NGX_PORT=1234 sheogorath/nginx-pagespeed
 ```
 
-## Options
+## Configuration
 
 We currently use a generic way to generate our configs for mod_pagespeed. But there are some settings to generate the upstream config:
 
