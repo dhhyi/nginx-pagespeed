@@ -1,0 +1,23 @@
+sudo: required
+language: bash
+services:
+  - docker
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y openssl parallel
+  - docker network create testing
+  - docker run -d --network testing --name sample tutum/hello-world
+
+
+script:
+  # Initial build with default parameters
+  - docker build -t nginx-pagespeed:testing .
+  # Run all tests from test directory
+  - ls tests/*.sh | parallel --joblog /tmp/joblog
+  - cat /tmp/joblog
+
+after_success:
+  # Run build on Docker Hub
+  - '[ "$TRAVIS_EVENT_TYPE" = "cron" ] &&  [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_BRANCH" = "master" ] && [ "$DOCKER_PUSH_URL" != "" ] && curl --data build=true -X POST $DOCKER_PUSH_URL'
+
