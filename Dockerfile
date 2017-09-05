@@ -18,7 +18,9 @@ ENV NPSC_FILE_CACHE_PATH=/var/cache/ngx_pagespeed
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install Build Tools & Dependence
-RUN apt-get update && \
+RUN echo "deb-src http://archive.ubuntu.com/ubuntu/ trusty main restricted" >> /etc/apt/sources.list && \
+    echo "deb-src http://archive.ubuntu.com/ubuntu/ trusty-updates main restricted" >> /etc/apt/sources.list && \
+    apt-get update && \
     apt-get install wget -y && \
     apt-get build-dep nginx -y && \
     apt-get clean && \
