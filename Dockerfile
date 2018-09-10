@@ -34,10 +34,10 @@ RUN echo "deb-src http://archive.ubuntu.com/ubuntu/ trusty main restricted" >> /
     rm -rf nginx-${NGINX_VERSION}.tar.gz && \
     # Download pagespeed ressources
     cd ${MODULE_DIR} && \
-    wget -q https://github.com/pagespeed/ngx_pagespeed/archive/release-${NPS_VERSION}-beta.tar.gz && \
-    tar zxf release-${NPS_VERSION}-beta.tar.gz && \
-    rm -rf release-${NPS_VERSION}-beta.tar.gz && \
-    cd ngx_pagespeed-release-${NPS_VERSION}-beta/ && \
+    wget -q https://github.com/apache/incubator-pagespeed-ngx/archive/v${NPS_VERSION}-beta.tar.gz && \
+    tar zxf v${NPS_VERSION}-beta.tar.gz && \
+    rm -rf v${NPS_VERSION}-beta.tar.gz && \
+    cd incubator-pagespeed-ngx-${NPS_VERSION}-beta/ && \
     wget -q https://dl.google.com/dl/page-speed/psol/${NPS_VERSION}.tar.gz && \
     tar zxf ${NPS_VERSION}.tar.gz && \
     rm -rf ${NPS_VERSION}.tar.gz && \
@@ -60,7 +60,7 @@ RUN echo "deb-src http://archive.ubuntu.com/ubuntu/ trusty main restricted" >> /
     #--with-threads \
     --with-file-aio \
     --with-ipv6 \
-    --add-module=${MODULE_DIR}/ngx_pagespeed-release-${NPS_VERSION}-beta \
+    --add-module=${MODULE_DIR}/incubator-pagespeed-ngx-${NPS_VERSION}-beta \
     # Build nginx
     && cd /usr/src/nginx-${NGINX_VERSION} \
     && make -j`nproc` && make install  \
