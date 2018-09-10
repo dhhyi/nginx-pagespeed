@@ -21,7 +21,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN echo "deb-src http://archive.ubuntu.com/ubuntu/ trusty main restricted" >> /etc/apt/sources.list && \
     echo "deb-src http://archive.ubuntu.com/ubuntu/ trusty-updates main restricted" >> /etc/apt/sources.list && \
     apt-get update && \
-    apt-get install wget -y && \
+    apt-get install wget curl -y && \
     apt-get build-dep nginx -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
