@@ -3,6 +3,7 @@
 set -e
 
 NGX_UPSTREAM=${NGX_ADDRESS:-app}:${NGX_PORT:-80}
+ICM_BASE=${ICM_BASE_HOST:-icm}:${ICM_BASE_PORT:-443}
 
 NGX_CACHE_DURATION="${NGX_CACHE_DURATION:-"10m"}"
 
@@ -10,6 +11,7 @@ NGX_CACHE_DURATION="${NGX_CACHE_DURATION:-"10m"}"
 
 # Generate Upstream config
 sed -i 's%NGX_UPSTREAM%'"${NGX_UPSTREAM}"'%' /etc/nginx/upstream.conf
+sed -i 's%ICM_BASE%'"${ICM_BASE}"'%' /etc/nginx/upstream.conf
 sed -i 's%NGX_CACHE_DURATION%'"${NGX_CACHE_DURATION}"'%' /etc/nginx/upstream.conf
 
 # Generate Pagespeed config based on environment variables
